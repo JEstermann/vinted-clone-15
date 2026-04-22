@@ -27,6 +27,33 @@ export type Condition = {
   label: string;
 };
 
+export type SortOption = "date_desc" | "price_asc" | "price_desc";
+
+export interface CatalogueFilters {
+  search?: string;
+  category?: string;
+  condition?: string;
+  priceMin?: number;
+  priceMax?: number;
+  sort?: SortOption;
+}
+
+export type ValidationError = {
+  field: string;
+  message: string;
+};
+
+export interface ApiResponse<T> {
+  data: T;
+  total?: number;
+  page?: number;
+  perPage?: number;
+}
+
+export interface FormValidationState {
+  [key: string]: string;
+}
+
 export const CATEGORIES: Category[] = [
   { id: "tops", label: "Hauts" },
   { id: "bottoms", label: "Bas" },

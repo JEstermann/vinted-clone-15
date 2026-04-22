@@ -1,0 +1,85 @@
+.article-card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.article-card-image-link {
+  display: block;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.article-card-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: contain;
+}
+
+.article-card-content {
+  padding: 1rem;
+}
+
+.article-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.article-card-title-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.article-card-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin: 0;
+  color: #1f2937;
+}
+
+.article-card-title-link:hover .article-card-title {
+  color: #0d9488;
+}
+
+.article-card-favorite-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.article-card-favorite-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.article-card-favorite-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.article-card-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0d9488;
+  margin: 0.25rem 0;
+}
+
+.article-card-meta {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 0.25rem 0;
+}
+
+.article-card-seller {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
