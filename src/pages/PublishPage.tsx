@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { CATEGORIES, CONDITIONS } from "../types/article";
@@ -29,10 +29,31 @@ export default function PublishPage() {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isDraftLoaded, setIsDraftLoaded] = useState(false);
+
+  useEffect(() => {
+    const savedDraft = localStorage.getItem("draft");
+    if (savedDraft) {
+      try {
+        const draftData = JSON.parse(savedDraft);
+        setFormData(draftData);
+      } catch (error) {
+        console.warn("Erreur lors du chargement du brouillon:", error);
+      }
+    }
+    setIsDraftLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isDraftLoaded) {
+      localStorage.setItem("draft", JSON.stringify(formData));
+    }
+  }, [formData, isDraftLoaded]);
 
   const mutation = useMutation({
     mutationFn: (data: ArticleFormData) => articlesService.create(data),
     onSuccess: () => {
+      localStorage.removeItem("draft");
       navigate("/my-articles");
       queryClient.invalidateQueries({ queryKey: ["my-articles"] });
     },
