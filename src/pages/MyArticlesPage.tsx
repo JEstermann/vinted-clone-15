@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import { useMyArticle } from "../hooks/useMyArticle";
 import { EmptyState } from "../components/EmptyState";
 import { ArticleCard } from "../components/ArticleCard";
@@ -9,7 +8,6 @@ import type { Article } from "../types/article";
 import "./MyArticlesPage.css";
 
 export default function MyArticlesPage() {
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const { data: articles = [], isLoading, isError, error } = useMyArticle();
